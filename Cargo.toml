@@ -1,11 +1,67 @@
 [package]
-name = "darwin-bridge-adapter"
+name    = "darwin-bridge-adapter"
 version = "0.1.0"
 edition = "2021"
 license = "MIT"
-description = "AggLayer bridge integration for Darwin Protocol: B2AGG note builder, CLAIM note recognition, L1 wrapper ERC20 stubs."
-repository = "https://github.com/darwin-miden/darwin-bridge-adapter"
+description = "AggLayer bridge integration for Darwin Protocol: B2AGG note builder, CLAIM note recognition, L1 wrapper ERC20."
+repository  = "https://github.com/darwin-miden/darwin-bridge-adapter"
 
 [dependencies]
-serde = { version = "1", features = ["derive"] }
+serde     = { version = "1", features = ["derive"] }
 thiserror = "1"
+
+# `client` feature pulls in miden-client + miden-agglayer for the
+# Darwin-flavoured bridge-out CLI. Off by default so the pure-types
+# library + Foundry tests stay light.
+[features]
+default = []
+client  = [
+    "dep:anyhow",
+    "dep:clap",
+    "dep:miden-agglayer",
+    "dep:miden-client",
+    "dep:miden-client-sqlite-store",
+    "dep:miden-protocol",
+    "dep:tokio",
+    "dep:url",
+]
+
+[dependencies.anyhow]
+version  = "1"
+optional = true
+
+[dependencies.clap]
+version  = "4.5"
+features = ["derive", "env"]
+optional = true
+
+[dependencies.miden-agglayer]
+version  = "0.14"
+optional = true
+
+[dependencies.miden-client]
+version  = "0.14"
+features = ["tonic"]
+optional = true
+
+[dependencies.miden-client-sqlite-store]
+version  = "0.14"
+optional = true
+
+[dependencies.miden-protocol]
+version  = "0.14"
+optional = true
+
+[dependencies.tokio]
+version  = "1"
+features = ["rt", "rt-multi-thread", "macros"]
+optional = true
+
+[dependencies.url]
+version  = "2"
+optional = true
+
+[[bin]]
+name              = "darwin_bridge_out"
+path              = "src/bin/darwin_bridge_out.rs"
+required-features = ["client"]
