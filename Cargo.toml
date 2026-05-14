@@ -1,0 +1,11 @@
+[package]
+name = "darwin-bridge-adapter"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "AggLayer bridge integration for Darwin Protocol: B2AGG note builder, CLAIM note recognition, L1 wrapper ERC20 stubs."
+repository = "https://github.com/darwin-miden/darwin-bridge-adapter"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+thiserror = "1"
