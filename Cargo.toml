@@ -16,12 +16,16 @@ thiserror = "1"
 [features]
 default = []
 client  = [
+    "dep:alloy",
     "dep:anyhow",
     "dep:clap",
+    "dep:hex",
     "dep:miden-agglayer",
     "dep:miden-client",
     "dep:miden-client-sqlite-store",
     "dep:miden-protocol",
+    "dep:reqwest",
+    "dep:serde_json",
     "dep:tokio",
     "dep:url",
 ]
@@ -61,7 +65,31 @@ optional = true
 version  = "2"
 optional = true
 
+[dependencies.alloy]
+version  = "2"
+features = ["full"]
+optional = true
+
+[dependencies.reqwest]
+version          = "0.12"
+default-features = false
+features         = ["json", "rustls-tls"]
+optional         = true
+
+[dependencies.serde_json]
+version  = "1"
+optional = true
+
+[dependencies.hex]
+version  = "0.4"
+optional = true
+
 [[bin]]
 name              = "darwin_bridge_out"
 path              = "src/bin/darwin_bridge_out.rs"
+required-features = ["client"]
+
+[[bin]]
+name              = "darwin_l1_claim"
+path              = "src/bin/darwin_l1_claim.rs"
 required-features = ["client"]
