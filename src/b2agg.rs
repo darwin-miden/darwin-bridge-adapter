@@ -58,9 +58,7 @@ impl B2AggBuilder {
     }
 
     pub fn build(self) -> Result<B2AggBuild, B2AggBuildError> {
-        let asset_faucet_id = self
-            .asset_faucet_id
-            .ok_or(B2AggBuildError::MissingAsset)?;
+        let asset_faucet_id = self.asset_faucet_id.ok_or(B2AggBuildError::MissingAsset)?;
         let amount = self.amount.ok_or(B2AggBuildError::MissingAsset)?;
         if amount == 0 {
             return Err(B2AggBuildError::ZeroAmount);

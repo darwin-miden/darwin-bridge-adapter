@@ -18,7 +18,7 @@ pub mod b2agg;
 pub mod claim;
 pub mod eth;
 
-pub use b2agg::{B2AggBuilder, B2AggBuildError};
+pub use b2agg::{B2AggBuildError, B2AggBuilder};
 pub use claim::{ClaimRecognition, IncomingBridgedAsset};
 pub use eth::{EthAddress, EthNetwork};
 
