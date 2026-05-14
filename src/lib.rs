@@ -34,6 +34,21 @@ mod tests {
     }
 
     #[test]
+    fn eth_address_hex_round_trip() {
+        let hex = "0x2a3dd3eb832af982ec71669e178424b10dca2ede";
+        let addr = EthAddress::parse_hex(hex).expect("parses");
+        assert_eq!(addr.to_hex(), hex);
+    }
+
+    #[test]
+    fn eth_address_parse_rejects_malformed() {
+        assert!(EthAddress::parse_hex("0xshort").is_none());
+        assert!(EthAddress::parse_hex("not_hex").is_none());
+        assert!(EthAddress::parse_hex("0x2a3dd3eb832af982ec71669e178424b10dca2ed").is_none());
+        assert!(EthAddress::parse_hex("0x2a3dd3eb832af982ec71669e178424b10dca2edez").is_none());
+    }
+
+    #[test]
     fn b2agg_builder_requires_asset_and_destination() {
         let err = B2AggBuilder::new().build().unwrap_err();
         assert!(matches!(err, B2AggBuildError::MissingAsset));
