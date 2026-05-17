@@ -15,8 +15,8 @@ import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 /// (set at deployment, transferable) is the only address that can
 /// register or modify a basket.
 ///
-/// Grant M2 §1 — "strategy storage (token list, target weights,
-/// rebalancing rules, fee structure), NAV reference".
+/// Strategy storage: token list, target weights, rebalancing rules,
+/// fee structure, and the NAV reference.
 contract DarwinStrategy is Ownable {
     /// One entry per basket. `tokens` and `targetWeightsBps` are
     /// parallel arrays — index i is the weight of token i. Sum of

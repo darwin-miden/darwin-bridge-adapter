@@ -16,7 +16,7 @@ import {DarwinStrategy} from "./DarwinStrategy.sol";
 /// `burnFrom`. End users hold and transfer freely. Fees are skimmed
 /// on every mint/redeem and on a time-prorated management-fee tick.
 ///
-/// Grant M2 §1 — basket token mint/burn + fee collection.
+/// Basket token mint/burn + fee collection on the ETH side.
 contract DarwinBasketToken is ERC20, Ownable {
     DarwinStrategy public immutable strategy;
     bytes32 public immutable basketId;
