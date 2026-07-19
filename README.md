@@ -2,7 +2,7 @@
 
 AggLayer bridge integration for Darwin Protocol: `B2AGG` note builder, `CLAIM` note recognition, and Solidity stubs for the L1 wrapper ERC20s (`wDCC`, `wDAG`, `wDCO`).
 
-See [`darwin-docs/m1-architecture-spec.md`](https://github.com/darwin-miden/darwin-docs/blob/main/docs/m1-architecture-spec.md) §10 for the full specification.
+See [`darwin-docs/architecture-spec.md`](https://github.com/darwin-miden/darwin-docs/blob/main/docs/architecture-spec.md) §10 for the full specification.
 
 ## What this crate does
 
